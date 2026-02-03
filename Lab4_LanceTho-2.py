@@ -79,38 +79,54 @@ hangman_drawing: list = [
     ]
 
 #Create a variable to keep track of the wrong guesses, initialize to 0
+wrong_guesses: int = 0
 
-#Create a variable to keep track of Game Over [“yes” or “no”]
-
+#Create a variable to iterate through the hangman_drawing list
+drawing: int = 0
 
 
 #Ask the user for a guess
+print(hangman_drawing[0])
+print("Guess a number")
+user_guess: int = int(input())
 
 #While the guess is not None:
+while user_guess != None:
+           
+
+    #If guess equal to generated number:
+    if user_guess == hangman_value:
+
+        #Print a congratulations
+        print("Congratulations! You guessed the right number!")
+        #Break out of while loop
+        break
+
+    #Else:
+    else:
+
+        #Print the next object in the hanged man list
+        print(hangman_drawing[drawing])
+        drawing = drawing + 1
+        wrong_guesses = wrong_guesses + 1
+        #Increment the wrong guesses
 
            
 
-#If guess equal to generated number:
-
-   #Print a congratulations
-
-   #Break out of while loop
-
-#Else:
-
-#Print the next object in the hanged man list
-
-#Increment the wrong guesses
-
-           
-
-#If wrong guesses is equal to length of hanged man list:
-
-#Print a sad message
-
-#Break out of while loop
+    #If wrong guesses is equal to length of hanged man list:
+    if wrong_guesses == len(hangman_drawing):
+        #Print a sad message
+        print("Too Bad! You Lose!")
+        #Break out of while loop
+        break
 
 
+    if user_guess > hangman_value:
+        print("That's too high")
 
-#Ask user for another guess
+    if user_guess < hangman_value:
+        print("That's too low")
 
+    #Ask user for another guess
+    print("Guess a number")
+    user_guess = int(input())
